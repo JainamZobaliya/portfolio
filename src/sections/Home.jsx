@@ -9,11 +9,7 @@ function BioSubTitle({ text, ...props }) {
 }
 
 function BioImage({ src }) {
-	return (
-		<span className="bioImage unselectable">
-			<img src={src} draggable="false" style={{ width: "100%", height: "auto", borderRadius: "50%" }} />
-		</span>
-	);
+	return <img className="bio-img-wrapper bioImage unselectable" src={src} draggable="false" />;
 }
 
 export function Home(props) {

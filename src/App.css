@@ -48,10 +48,10 @@ img.unselectable::after {
 	gap: 1vw;
 	/* flex-wrap: wrap; */
 	height: 100vh;
-	padding: 1.2vw;
+	padding: 2.4vw;
 	/* background-image: linear-gradient(to right bottom, #051937, #00476e, #007b9f, #00b2c2, #12ebd5); */
 	/* background-image: linear-gradient(to right top, #051937, #163d5d, #2e6481, #4c8ea4, #71bac5, #c0f6ff, #d4f6ff, #e6f6ff, #fff, #fff, #fff, #fff, #fff, #fff); */
-	background-image: linear-gradient(to right, #163d5d, #2e6481, #4c8ea4, #71bac5, #c0f6ff, #d4f6ff, #e6f6ff, #fff, #fff, #fff, #fff, #fff, #fff);
+	background-image: linear-gradient(to right, #163d5d, #2e6481, #4c8ea4, #71bac5, #c0f6ff, #d4f6ff, #e6f6ff, #fff, #fff, #fff, #fff, #fff);
 }
 
 .bio-text-wrapper {
@@ -79,22 +79,36 @@ img.unselectable::after {
 	font-family: Georgia, "Lucida Console", monospace;
 }
 
-
 .blink-cursor::after {
 	content: "";
 	display: inline-block;
-	width: 0.1em;        /* cursor thickness relative to text */
-	height: 1em;         /* match text height */
+	width: 0.1em; /* cursor thickness relative to text */
+	height: 1em; /* match text height */
 	background: currentColor;
 	margin-left: 0.1em;
 	vertical-align: -0.1em; /* small adjustment based on font */
 	animation: blink 0.7s steps(1) infinite;
 }
 
+.bio-img-wrapper {
+	align-items: center;
+	max-width: clamp(140px, 100vw, 500px);
+	width: 100%;
+	height: auto;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
 @keyframes blink {
-	0% { opacity: 1; }
-	50% { opacity: 0; }
-	100% { opacity: 1; }
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }
 
 /* Responsive breakpoint */

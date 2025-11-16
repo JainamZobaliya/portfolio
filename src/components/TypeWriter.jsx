@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function TypeWriter({ text = [], speed = 50, className = "", style = {} }) {
+function TypeWriter({ text = [], speed = 50, pauseDuration = 1500, className = "", style = {} }) {
 	const [subDisplayText, setSubDisplayText] = useState("");
 	const [mainDisplayText, setMainDisplayText] = useState("");
 	const [index, setIndex] = useState(0);
@@ -8,37 +8,26 @@ function TypeWriter({ text = [], speed = 50, className = "", style = {} }) {
 	const isTextList = Array.isArray(text);
 
 	useEffect(() => {
-		// internal typing counter
 		let t = -1;
-
-		// track whether subText is finished
 		let subDone = false;
 
-		// pick the current item
 		const current = isTextList ? text[index] : text;
-
-		// support "sub|main" syntax
-		const parts = current.includes("|") ? current.split("|") : [isTextList ? "I am " : "", current];
+		const parts = current.includes("|") ? current.split("|") : [isTextList ? "I am a " : "", current];
 
 		const subText = parts[0];
 		const mainText = parts[1];
 
-		// reset displayed texts
 		setSubDisplayText("");
 		setMainDisplayText("");
 
 		const interval = setInterval(() => {
-			/* ---------------------------
-				RESET PHASE (t === -11)
-			----------------------------*/
+			// RESET PHASE
 			if (t === -11) {
 				setSubDisplayText("");
 				setMainDisplayText("");
 			}
 
-			/* ---------------------------
-				TYPE subText FIRST
-			----------------------------*/
+			// TYPE subText
 			if (!subDone) {
 				if (t < subText.length) {
 					t++;
@@ -47,16 +36,12 @@ function TypeWriter({ text = [], speed = 50, className = "", style = {} }) {
 					}
 					return;
 				}
-
-				// subText is fully typed → switch to mainText
 				subDone = true;
 				t = -1;
 				return;
 			}
 
-			/* ---------------------------
-				TYPE mainText NEXT
-			----------------------------*/
+			// TYPE mainText
 			if (t < mainText.length) {
 				t++;
 				if (t >= 0) {
@@ -65,16 +50,12 @@ function TypeWriter({ text = [], speed = 50, className = "", style = {} }) {
 				return;
 			}
 
-			/* ---------------------------
-				PAUSE (t = -25)
-			----------------------------*/
-			t = -25;
-
-			// done → go to next index
+			// FULL LINE DONE → APPLY PAUSE
 			clearInterval(interval);
+
 			setTimeout(() => {
 				setIndex((prev) => (prev + 1) % text.length);
-			}, speed);
+			}, pauseDuration); // <-- REAL PAUSE HERE
 		}, speed);
 
 		return () => clearInterval(interval);
