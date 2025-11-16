@@ -41,20 +41,26 @@ img.unselectable::after {
 	display: table;
 }
 
+.snap-section {
+	height: 100vh;
+	scroll-snap-align: start;
+	scroll-snap-stop: always;
+}
+
 .home-wrapper {
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
 	gap: 1vw;
 	/* flex-wrap: wrap; */
-	height: 100vh;
 	padding: 2.4vw;
+	color: #020617;
 	/* background-image: linear-gradient(to right bottom, #051937, #00476e, #007b9f, #00b2c2, #12ebd5); */
 	/* background-image: linear-gradient(to right top, #051937, #163d5d, #2e6481, #4c8ea4, #71bac5, #c0f6ff, #d4f6ff, #e6f6ff, #fff, #fff, #fff, #fff, #fff, #fff); */
 	background-image: linear-gradient(to right, #163d5d, #2e6481, #4c8ea4, #71bac5, #c0f6ff, #d4f6ff, #e6f6ff, #fff, #fff, #fff, #fff, #fff);
 }
 
-.bio-text-wrapper {
+.section-text-wrapper {
 	z-index: 1;
 	display: flex;
 	flex-direction: column;
@@ -65,12 +71,12 @@ img.unselectable::after {
 	width: 40vw;
 }
 
-.bioTitle {
+.sectionTitle {
 	font-size: 10vw;
 	font-family: Arial, Helvetica, sans-serif;
 }
 
-.bioSubTitle {
+.sectionSubTitle {
 	font-size: 2vw;
 }
 
@@ -97,6 +103,23 @@ img.unselectable::after {
 	height: auto;
 	border-radius: 50%;
 	object-fit: cover;
+}
+
+.coming-soon-wrapper {
+	background: ;
+	color: #020617;
+	display: flex;
+	justify-content: center;
+	padding: 2.4vw;
+	background-image: linear-gradient(to right, #163d5d, #2e6481, #4c8ea4, #71bac5, #c0f6ff, #d4f6ff, #e6f6ff, #fff, #fff, #fff, #fff, #fff);
+}
+
+.coming-soon-content {
+	max-width: 960px;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
 }
 
 @keyframes blink {
